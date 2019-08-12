@@ -39,10 +39,13 @@ export default function Body(props) {
     }
     // nhập dấu +,-,*,/ cho phép tính
     const inputPhepTinh = (dau) => {
-        setCallNum2(true)
-        setDau(dau)
+        if (firstNum !== "0") {
+            setCallNum2(true)
+            setDau(dau)
+        }
     }
 
+    // thay đổi số đầu tiên sang âm
     const nagative = () => {
         if (num1 > 0) {
             setFirstNum(-Math.abs(firstNum))
@@ -63,6 +66,9 @@ export default function Body(props) {
                 break;
             case "/":
                 setTotal(parseFloat(num1 / num2));
+                break;
+            case "%":
+                setTotal(parseFloat(num1 * (num2 / 100)));
                 break;
             default:
                 setTotal("Wrong Inputed");
